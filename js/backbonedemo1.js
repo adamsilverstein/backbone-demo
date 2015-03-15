@@ -24,14 +24,6 @@
 	bbdemo.model.PostModel = Backbone.Model.extend( {
 
 		/**
-		 * Initialize the model.
-		 */
-		initialize: function() {
-			console.log( 'bbdemo.model.PostModel' );
-		},
-
-
-		/**
 		 * Override the default sync method to call our custom API endpoint.
 		 */
 		sync: function( method, model, options ) {
@@ -46,7 +38,6 @@
 			 */
 			return Backbone.sync( method, model, options );
 		}
-
 
 	})
 
@@ -72,7 +63,6 @@
 		 */
 		initialize: function( model ) {
 			var self = this;
-			console.log( 'bbdemo.view.PostView' );
 			this.model = model;
 			this.model.fetch({
 				success: function() {
@@ -83,20 +73,17 @@
 		},
 
 		render: function() {
-
-			console.log( 'bbdemo.view.PostView::render' );
-			console.log( this );
-			console.log( this.$el );
-			jQuery( '.backbonedemo' ).html( this.template( this.model.attributes ) );
-
+			jQuery( '.backbonedemo' )
+				.html(
+					this.template(
+						this.model.attributes
+					)
+				);
 			return this;
 		},
 
 
 	});
-
-
-
 
 
 	/**
@@ -114,10 +101,10 @@
 		bbdemo.view.postview = new bbdemo.view.PostView( postmodel );
 	}
 
+	/**
+	 * Go! Initialize the application one document ready.
+	 */
 	$( document ).ready( function() {
-		/**
-		 * Go! Initialize the application.
-		 */
 		bbdemo.initialize();
 	});
 
