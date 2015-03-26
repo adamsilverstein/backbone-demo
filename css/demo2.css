@@ -1,0 +1,24 @@
+.backbonedemo-postlistitem-title a {
+	color: #000;
+	font-family: Arial;
+	text-decoration: none;
+}
+
+.backbonedemo-postlistitem-title a:hover {
+	color: #FA6900;
+}
+
+.backbonedemo-post-container {
+	transition: 1s;
+	left: 25%;
+	position: absolute;
+	max-width: 400px;
+}
+
+.backbonedemo-post-container h2 {
+	margin: 0;
+}
+
+.backbonedemo-postlistitem-container {
+	margin-top:0px;
+}
