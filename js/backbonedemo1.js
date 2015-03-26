@@ -8,105 +8,103 @@
 
 
  ( function( $ ) {
-	'use strict';
+ 	$( document ).ready( function() {
 
-	window.wp     = window.wp || {};
-	window.bbdemo = window.bbdemo || {};
 
-	bbdemo.model = {};
-	bbdemo.view  = {};
+		window.wp     = window.wp || {};
+		window.bbdemo = window.bbdemo || {};
 
-	/**
-	 * ==========================================
-	 * MODELS
-	 * ==========================================
-	 */
-	bbdemo.model.PostModel = Backbone.Model.extend( {
+		bbdemo.model = {};
+		bbdemo.view  = {};
 
 		/**
-		 * Override the default sync method to call our custom API endpoint.
+		 * ==========================================
+		 * MODELS
+		 * ==========================================
 		 */
-		sync: function( method, model, options ) {
-			console.log( 'bbdemo.model.PostModel::sync' );
-			/**
-			 * Adjust the sync url: set to our api url, with hard coded post 1 url.
-			 */
-			options.url = demodata.apiurl + 'posts/1';
+		bbdemo.model.PostModel = Backbone.Model.extend( {
 
 			/**
-			 * Pass back to the default handler.
+			 * Override the default sync method to call our custom API endpoint.
 			 */
-			return Backbone.sync( method, model, options );
-		}
+			sync: function( method, model, options ) {
+				/**
+				 * Adjust the sync url: set to our api url, with hard coded post 1 url.
+				 */
+				options.url = demodata.apiurl + 'posts/1';
 
-	})
+				/**
+				 * Pass back to the default handler.
+				 */
+				return Backbone.sync( method, model, options );
+			}
 
-	/**
-	 * ==========================================
-	 * VIEWS
-	 * ==========================================
-	 */
-
-	/**
-	 * The main post view.
-	 */
-	bbdemo.view.PostView = wp.Backbone.View.extend( {
+		} );
 
 		/**
-		 * Set the view class and template.
+		 * ==========================================
+		 * VIEWS
+		 * ==========================================
 		 */
-		className: 'backbonedemo',
-		template:  wp.template( 'backbonedemo-post' ),
 
 		/**
-		 * Initialize the view.
+		 * The main post view.
 		 */
-		initialize: function( model ) {
-			var self = this;
-			this.model = model;
-			this.model.fetch({
-				success: function() {
-					self.render();
-				}
-			});
+		bbdemo.view.PostView = wp.Backbone.View.extend( {
 
-		},
+			/**
+			 * Set the view class and template.
+			 */
+			className: 'backbonedemo',
+			template:  wp.template( 'backbonedemo-post' ),
 
-		render: function() {
-			jQuery( '.backbonedemo' )
-				.html(
+			/**
+			 * Initialize the view.
+			 */
+			initialize: function( model ) {
+				var self = this;
+				this.model = model;
+				this.model.fetch({
+					success: function() {
+						self.render();
+					}
+				});
+
+			},
+
+			render: function() {
+				this.$el.html(
 					this.template(
 						this.model.attributes
-					)
-				);
+						)
+					);
+
 			return this;
-		},
+			},
+		});
 
+
+		/**
+		 * ==========================================
+		 * MAIN APP SETUP
+		 * ==========================================
+		 */
+
+		/**
+		 * Funciton to initialize the application.
+		 */
+		bbdemo.initialize = function() {
+			var postmodel = new bbdemo.model.PostModel();
+			bbdemo.view.postview = new bbdemo.view.PostView( postmodel );
+			$( 'body' ).append( bbdemo.view.postview.el );
+		}
+
+		/**
+		 * Go! Initialize the application one document ready.
+		 */
+		$( document ).ready( function() {
+			bbdemo.initialize();
+		});
 
 	});
-
-
-	/**
-	 * ==========================================
-	 * MAIN APP SETUP
-	 * ==========================================
-	 */
-
-	/**
-	 * Funciton to initialize the application.
-	 */
-	bbdemo.initialize = function() {
-		console.log( 'bbdemo.initialize' );
-		var postmodel = new bbdemo.model.PostModel();
-		bbdemo.view.postview = new bbdemo.view.PostView( postmodel );
-	}
-
-	/**
-	 * Go! Initialize the application one document ready.
-	 */
-	$( document ).ready( function() {
-		bbdemo.initialize();
-	});
-
-
  } )( jQuery );
