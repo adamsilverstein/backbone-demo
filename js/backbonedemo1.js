@@ -31,7 +31,7 @@
 				/**
 				 * Adjust the sync url: set to our api url, with hard coded post 1 url.
 				 */
-				options.url = demodata.apiurl + 'posts/1';
+				options.url = demodata.apiurl + '/posts/16';
 
 				/**
 				 * Pass back to the default handler.

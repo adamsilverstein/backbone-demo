@@ -11,6 +11,7 @@ const VERSION = 0.1;
 
 function bbdemo_include_scripts() {
 	$request_uri = stripslashes( $_SERVER['REQUEST_URI'] );
+
 	/**
 	 * If the URL matches '/demo1' include Demo1 code
 	 */
@@ -19,6 +20,11 @@ function bbdemo_include_scripts() {
 		$demodata = array(
 			'apiurl' => get_json_url(), /* Pass the WP REST API url */
 		);
+		/**
+		 * Add some style.
+		 */
+		$stylesheet        = get_template_directory_uri() . '/css/demo1.css';
+		$stylesheet_handle = 'demo1-styles';
 	} elseif ( false !== strpos( $request_uri, '/demo2' ) )  {
 		$scriptname = 'backbonedemo2.js';
 		$post_data  = get_posts( array(

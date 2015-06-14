@@ -17,7 +17,7 @@ namespace backbonedemo\demo2
 			<h2>{{ data.title }}</h2>
 	</div>
 	<div class="backbonedemo-post-content">
-		{{ data.content }}
+		{{{ data.content }}}
 	</div>
 </script>
 

@@ -22,3 +22,14 @@
 .backbonedemo-postlistitem-container {
 	margin-top:0px;
 }
+
+.backbonedemo-post-container {
+	padding: 20px;
+	border: 1px solid black;
+	margin: 20px;
+}
+
+.backbonedemo-post-container h2 {
+	-webkit-margin-before: 0;
+
+}
