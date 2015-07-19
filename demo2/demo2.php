@@ -14,12 +14,14 @@ namespace backbonedemo\demo2
 	<!-- Post -->
 	<div class="backbonedemo-post-container" >
 		<div class="backbonedemo-post-title">
-			<h2>{{ data.title }}</h2>
-	</div>
-	<div class="backbonedemo-post-content">
-		{{{ data.content }}}
+			<h2>{{ data.title.rendered }}</h2>
+		</div>
+		<div class="backbonedemo-post-content">
+			{{{ data.content.rendered }}}
+		</div>
 	</div>
 </script>
+
 
 <!-- Demo postlist template -->
 <script id="tmpl-backbonedemo-postlist" type="text/html">
