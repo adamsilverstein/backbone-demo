@@ -67,16 +67,18 @@
 			contentFieldContent: '',
 
 			events: {
-				'blur .backbonedemo-post-title': 'contentEditableChange',
-				'blur .backbonedemo-post-content': 'contentEditableChange'
+				'input [contenteditable]': 'debouncedContentEditableChange'
 			},
 
-			initialize: function( postId ){
-
+			initialize: function() {
+				var self = this;
+				this.debouncedContentEditableChange = _.debounce( function() {
+												self.contentEditableChange();
+											}, 500 );
 			},
 
 			contentEditableChange: function() {
-				console.log( 'contentEditableChange' );
+
 				var titleField          = this.$el.find( '.backbonedemo-post-title h2' ),
 					contentField        = this.$el.find( '.backbonedemo-post-content' ),
 					titleFieldContent   = titleField.html(),
