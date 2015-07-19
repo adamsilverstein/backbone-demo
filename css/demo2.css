@@ -10,9 +10,10 @@
 
 .backbonedemo-post-container {
 	transition: 1s;
-	left: 25%;
+	left: 15%;
 	position: absolute;
-	max-width: 400px;
+	max-width: 75%;
+	margin-right: 5%
 }
 
 .backbonedemo-post-container h2 {
