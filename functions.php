@@ -46,6 +46,24 @@ function bbdemo_include_scripts() {
 		$stylesheet        = get_template_directory_uri() . '/css/demo2.css';
 		$stylesheet_handle = 'demo2-styles';
 
+	} elseif ( false !== strpos( $request_uri, '/demo3' ) )  {
+		$scriptname = 'backbonedemo3.js';
+		$post_data  = get_posts( array(
+				'posts_per_page' => 10,
+				'no_count_posts' => true,
+			) );
+		$demodata   = array(
+			'apiurl' => get_json_url(), /* Pass the WP REST API url */
+			'posts'  => $post_data,
+			'nonce'  => wp_create_nonce( 'wp_rest' ),
+		);
+
+		/**
+		 * Add some style.
+		 */
+		$stylesheet        = get_template_directory_uri() . '/css/demo3.css';
+		$stylesheet_handle = 'demo3-styles';
+
 	}
 
 	if ( isset( $scriptname ) ) {
