@@ -9,6 +9,10 @@ namespace backbonedemo;
 
 const VERSION = 0.1;
 
+function get_json_url() {
+	return '/wp-json/wp/v2';
+}
+
 function bbdemo_include_scripts() {
 	$request_uri = stripslashes( $_SERVER['REQUEST_URI'] );
 
