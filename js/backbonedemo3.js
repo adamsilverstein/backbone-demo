@@ -72,6 +72,10 @@
 
 			initialize: function() {
 				var self = this;
+
+				/**
+				 * Add a debounced version of the content editable change function.
+				 */
 				this.debouncedContentEditableChange = _.debounce( function() {
 												self.contentEditableChange();
 											}, 500 );
