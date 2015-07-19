@@ -8,11 +8,12 @@ namespace backbonedemo\demo1
 <!-- Demo post template -->
 <script id="tmpl-backbonedemo-post" type="text/html">
 	<!-- Post -->
-	<div class="backbonedemo-post-container">
+	<div class="backbonedemo-post-container" >
 		<div class="backbonedemo-post-title">
-			<h2>{{ data.title }}</h2>
-	</div>
-	<div class="backbonedemo-post-content">
-		{{{ data.content }}}
+			<h2>{{ data.title.rendered }}</h2>
+		</div>
+		<div class="backbonedemo-post-content">
+			{{{ data.content.rendered }}}
+		</div>
 	</div>
 </script>
