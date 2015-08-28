@@ -22,7 +22,7 @@ function bbdemo_include_scripts() {
 	if ( false !== strpos( $request_uri, '/demo1' ) ) {
 		$scriptname = 'backbonedemo1.js';
 		$demodata = array(
-			'apiurl' => get_json_url(), /* Pass the WP REST API url */
+			'apiurl' => trailingslashit( get_json_url() ), /* Pass the WP REST API url */
 		);
 		/**
 		 * Add some style.
@@ -36,7 +36,7 @@ function bbdemo_include_scripts() {
 				'no_count_posts' => true,
 			) );
 		$demodata   = array(
-			'apiurl' => get_json_url(), /* Pass the WP REST API url */
+			'apiurl' => trailingslashit( get_json_url() ), /* Pass the WP REST API url */
 			'posts'  => $post_data,
 		);
 
